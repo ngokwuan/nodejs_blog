@@ -1,6 +1,7 @@
 {
   "name": "blog",
   "version": "1.0.0",
+  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
@@ -23,7 +24,8 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
-    "express-handlebars": "^8.0.2"
+    "express-handlebars": "^8.0.2",
+    "mongoose": "^8.16.4"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
