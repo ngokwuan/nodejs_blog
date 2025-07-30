@@ -1,26 +1,49 @@
 <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-  <a class='navbar-brand' href='#'>Blog</a>
-  <button
-    class='navbar-toggler'
-    type='button'
-    data-toggle='collapse'
-    data-target='#navbarSupportedContent'
-    aria-controls='navbarSupportedContent'
-    aria-expanded='false'
-    aria-label='Toggle navigation'
-  >
-    <span class='navbar-toggler-icon'></span>
-  </button>
+  <div class='container'>
+    <a class='navbar-brand' href='/'>Blog</a>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-toggle='collapse'
+      data-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
 
-  <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-    <ul class='navbar-nav mr-auto'>
-      <li class='nav-item active'>
-        <a class='nav-link' href='#'>Home
-          <span class='sr-only'>(current)</span></a>
-      </li>
-      <li class='nav-item'>
-        <a class='nav-link' href='#'>Link</a>
-      </li>
-      
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ml-auto'>
+
+        <li class='nav-item dropdown'>
+          <a
+            class='nav-link dropdown-toggle'
+            href='#'
+            id='navbarDropdown'
+            role='button'
+            data-toggle='dropdown'
+            aria-haspopup='true'
+            aria-expanded='false'
+          >
+            <img
+              src='https://scontent.fsgn5-13.fna.fbcdn.net/v/t39.30808-1/439520827_1551079249047449_8790967180782982254_n.jpg?stp=cp0_dst-jpg_s80x80_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=ZxtA2OCU6oMQ7kNvwFKt1Ld&_nc_oc=AdkSmNppjrx0cSDLrFLCecv00bq5f36ab_nZeC4OV-Dt2PUoFjpk35LW0qbv5IBB0hc&_nc_zt=24&_nc_ht=scontent.fsgn5-13.fna&_nc_gid=enn-F9NwNfZZgbEUlv1H7w&oh=00_AfSSci4XBJrIEYP6T8GV52cYXSdzcBkG8vjXgjAOKCvOuQ&oe=688ACDBF'
+              alt=''
+              class='user-avatar'
+            />
+            Quận Nguyễn
+          </a>
+          <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+            <a class='dropdown-item' href='/courses/create'>Đăng khóa học</a>
+            <div class='dropdown-divider'></div>
+
+            <a class='dropdown-item' href='/me/stored/courses'>Khóa học của tôi</a>
+            <a class='dropdown-item' href='/me/stored/news'>Bài đăng của tôi</a>
+            <div class='dropdown-divider'></div>
+            <a class='dropdown-item' href='#'>Đăng xuất</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

@@ -1,13 +1,19 @@
 import { Course } from '../models/course.model.js';
-export const index = async (req, res) => {
+import { multipleMongooseToObject } from '../../util/mongoose.js';
+
+export const index = async (req, res, next) => {
   try {
     const courses = await Course.find({});
-    res.json(courses);
+    res.render('home', {
+      title: 'Home Page title',
+      //dung them map de chuyen thanh object literal moi su dung duoc cho handlebar
+      courses: multipleMongooseToObject(courses),
+    });
   } catch (error) {
-    res.status(400).json({ error: 'ERROR!!!' });
+    //next la ham middleware xu ly loi
+    next(error);
+    // res.status(400).json({ error: 'ERROR!!!' });
   }
-
-  // res.render('home');
 };
 
 export const search = (req, res) => {
