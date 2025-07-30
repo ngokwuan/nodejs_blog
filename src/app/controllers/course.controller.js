@@ -22,7 +22,6 @@ export const create = async (req, res, next) => {
 export const edit = async (req, res, next) => {
   try {
     const course = await Course.findById(req.params.id).exec();
-    console.log(course);
     res.render('courses/edit', {
       course: mongooseToObject(course),
     });
@@ -46,6 +45,15 @@ export const store = async (req, res, next) => {
 export const update = async (req, res, next) => {
   try {
     const course = await Course.updateOne({ _id: req.params.id }, req.body);
+    res.redirect('/me/stored/courses');
+  } catch (error) {
+    next(error);
+  }
+};
+//[DELETE] /courses/:id]
+export const deleted = async (req, res, next) => {
+  try {
+    await Course.deleteOne({ _id: req.params.id });
     res.redirect('/me/stored/courses');
   } catch (error) {
     next(error);
