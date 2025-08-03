@@ -32,10 +32,9 @@ export const edit = async (req, res, next) => {
 //[POST] /courses/store]
 export const store = async (req, res, next) => {
   try {
-    const formData = req.body;
-    formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
-    await Course.create(formData);
-    res.redirect('/');
+    req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+    await Course.create(req.body);
+    res.redirect('/me/stored/courses');
   } catch (error) {
     res.send('Failure!!!');
     next(error);
@@ -53,7 +52,27 @@ export const update = async (req, res, next) => {
 //[DELETE] /courses/:id]
 export const deleted = async (req, res, next) => {
   try {
+    //khi xoa xong thi tu dong them truong deleted nho thu vien mongoose-delete
+    await Course.delete({ _id: req.params.id });
+    res.redirect('/me/stored/courses');
+  } catch (error) {
+    next(error);
+  }
+};
+//[DELETE] /courses/:id/force]
+export const forceDeleted = async (req, res, next) => {
+  try {
     await Course.deleteOne({ _id: req.params.id });
+    res.redirect('/me/trash/courses');
+  } catch (error) {
+    next(error);
+  }
+};
+
+//[PATCH] /courses/:id/restore]
+export const restore = async (req, res, next) => {
+  try {
+    await Course.restore({ _id: req.params.id });
     res.redirect('/me/stored/courses');
   } catch (error) {
     next(error);
