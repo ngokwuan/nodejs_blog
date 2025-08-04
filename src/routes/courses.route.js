@@ -8,6 +8,8 @@ router.post('/store', controller.store);
 
 router.get('/:id/edit', controller.edit);
 router.patch('/:id/restore', controller.restore);
+
+router.post('/handle-form-actions', controller.handleFormActions);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.deleted);
 router.delete('/:id/force', controller.forceDeleted);

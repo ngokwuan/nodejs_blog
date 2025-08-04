@@ -5,8 +5,12 @@ import { multipleMongooseToObject } from '../../util/mongoose.js';
 export const storedCourses = async (req, res, next) => {
   try {
     const courses = await Course.find({});
+    const deletedCount = await Course.countDocumentsWithDeleted({
+      deleted: true,
+    });
     res.render('me/stored-courses', {
       courses: multipleMongooseToObject(courses),
+      deletedCount: deletedCount,
     });
   } catch (error) {
     next(error);

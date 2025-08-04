@@ -14,6 +14,26 @@ export const show = async (req, res, next) => {
   }
 };
 
+//[POST] /courses/handle-form-actions
+export const handleFormActions = async (req, res, next) => {
+  try {
+    switch (req.body.action) {
+      case 'delete':
+        try {
+          await Course.delete({ _id: { $in: req.body.courseIds } });
+          res.redirect('/me/stored/courses');
+        } catch (error) {
+          next(error);
+        }
+        break;
+      default:
+        res.json({ message: 'Action is invalid' });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 //[GET]/courses/create
 export const create = async (req, res, next) => {
   res.render('courses/create');
